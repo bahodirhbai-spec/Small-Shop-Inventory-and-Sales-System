@@ -16,5 +16,29 @@
         "name": "Olcha",
         "price": 15000,
         "stock": 30
+    },
+    {
+        "id": "P0004",
+        "name": "Apelsin",
+        "price": 30000,
+        "stock": 30
+    },
+    {
+        "id": "P0005",
+        "name": "Ananas",
+        "price": 40000,
+        "stock": 30
+    },
+    {
+        "id": "P0006",
+        "name": "Nok",
+        "price": 15000,
+        "stock": 30
+    },
+    {
+        "id": "P0007",
+        "name": "Anjir",
+        "price": 15000,
+        "stock": 30
     }
 ]
