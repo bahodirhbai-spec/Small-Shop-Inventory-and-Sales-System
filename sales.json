@@ -1,34 +1,10 @@
 [
     {
         "sale_id": "S0001",
-        "product_id": "P0001",
-        "product_name": "Olma",
-        "quantity": 10,
-        "unit_price": 15000,
-        "total": 150000
-    },
-    {
-        "sale_id": "S0002",
-        "product_id": "P0007",
-        "product_name": "Anjir",
-        "quantity": 30,
-        "unit_price": 15000,
-        "total": 450000
-    },
-    {
-        "sale_id": "S0003",
-        "product_id": "P0007",
-        "product_name": "Anjir",
-        "quantity": 30,
-        "unit_price": 15000,
-        "total": 450000
-    },
-    {
-        "sale_id": "S0004",
-        "product_id": "P0007",
-        "product_name": "Anjir",
-        "quantity": 10,
-        "unit_price": 15000,
-        "total": 150000
+        "product_id": "P0009",
+        "product_name": "fdfu",
+        "quantity": 20,
+        "unit_price": 2378,
+        "total": 47560
     }
 ]

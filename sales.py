@@ -1,15 +1,21 @@
 import json
 import os
+from pathlib import Path
 
 import numpy as np
 
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
-from storage import load_products, save_products
-from inventory import reduce_stock, list_product
+from inventory import (
+    list_product,
+    load_products,
+    normalize_product_id,
+    reduce_stock,
+    save_products,
+)
 
 
-SALES_FILE = "sales.json"
+SALES_FILE = Path(__file__).resolve().parent / "sales.json"
 LOW_STOCK_LIMIT = 5
 
 
@@ -38,22 +44,24 @@ class Sale(BaseModel):
 def load_sales():
     """sales.json dan sotuvlarni o'qiydi va Pydantic orqali tekshiradi."""
 
-    if not os.path.exists(SALES_FILE):
+    if not SALES_FILE.exists():
         return []
 
     try:
-        with open(SALES_FILE, "r", encoding="utf-8") as file:
+        with SALES_FILE.open("r", encoding="utf-8") as file:
             data = json.load(file)
 
-    except (json.JSONDecodeError, OSError):
+    except (json.JSONDecodeError, OSError) as error:
         # Jim bo'sh ro'yxat qaytarmaymiz: keyingi saqlashda eski
         # sotuvlar o'chib ketmasligi uchun xatoni ochiq ko'rsatamiz.
         raise ValueError(
-            "sales.json faylini o'qib bo'lmadi. Faylni tekshiring."
-        )
+            f"{SALES_FILE.name} faylini o'qib bo'lmadi: {error}"
+        ) from error
 
     if not isinstance(data, list):
-        raise ValueError("sales.json fayli ro'yxat bo'lishi kerak.")
+        raise ValueError(
+            f"{SALES_FILE.name} fayli ro'yxat bo'lishi kerak."
+        )
 
     validated_sales = []
 
@@ -63,7 +71,8 @@ def load_sales():
 
         except ValidationError as error:
             raise ValueError(
-                f"sales.json faylidagi {index}-sotuv noto'g'ri:\n{error}"
+                f"{SALES_FILE.name} faylidagi {index}-sotuv "
+                f"noto'g'ri:\n{error}"
             )
 
     return validated_sales
@@ -81,9 +90,9 @@ def save_sales(sales):
         for sale in sales
     ]
 
-    temp_file = SALES_FILE + ".tmp"
+    temp_file = SALES_FILE.with_name(SALES_FILE.name + ".tmp")
 
-    with open(temp_file, "w", encoding="utf-8") as file:
+    with temp_file.open("w", encoding="utf-8") as file:
         json.dump(
             validated_sales,
             file,
@@ -127,7 +136,7 @@ def make_sale(product_id, quantity):
     if not isinstance(quantity, int) or isinstance(quantity, bool) or quantity <= 0:
         return False, "Miqdor noldan katta butun son bo'lishi kerak."
 
-    product_id = str(product_id).strip().upper()
+    product_id = normalize_product_id(product_id)
     product = None
 
     for item in load_products():
@@ -197,14 +206,29 @@ def record_sale():
 
     list_product()
 
-    product_id = input("\nSotiladigan mahsulot ID raqami: ").strip().upper()
+    raw_id = input(
+        "\nSotiladigan mahsulot ID raqami "
+        "(masalan P0002 yoki 2, 0 - bekor qilish): "
+    ).strip()
+
+    if raw_id in ("", "0"):
+        print("Bekor qilindi.")
+        return None
+
+    product_id = normalize_product_id(raw_id)
 
     if not any(product["id"] == product_id for product in products):
         print("Xato! Bunday ID dagi mahsulot topilmadi.")
         return None
 
     while True:
-        quantity = input("Nechta dona sotiladi?  ").strip()
+        quantity = input(
+            "Nechta dona sotiladi? (0 - bekor qilish):  "
+        ).strip()
+
+        if quantity in ("", "0"):
+            print("Bekor qilindi.")
+            return None
 
         if quantity.isdecimal() and int(quantity) > 0:
             quantity = int(quantity)
