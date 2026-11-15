@@ -2,103 +2,55 @@
     {
         "id": "P0001",
         "name": "Olma",
-        "price": 7000,
-        "stock": 80
+        "price": 15000,
+        "stock": 40
     },
     {
         "id": "P0002",
         "name": "Banan",
         "price": 15000,
-        "stock": 77
+        "stock": 30
     },
     {
         "id": "P0003",
-        "name": "Rokstar",
-        "price": 13000,
-        "stock": 60
+        "name": "Olcha",
+        "price": 15000,
+        "stock": 30
     },
     {
         "id": "P0004",
-        "name": "Adrenaline",
-        "price": 14000,
-        "stock": 91
+        "name": "Apelsin",
+        "price": 30000,
+        "stock": 30
     },
     {
         "id": "P0005",
-        "name": "Flesh",
-        "price": 60,
-        "stock": 11
+        "name": "Ananas",
+        "price": 40000,
+        "stock": 30
     },
     {
         "id": "P0006",
-        "name": "Red Bull",
-        "price": 26000,
-        "stock": 90
+        "name": "Nok",
+        "price": 15000,
+        "stock": 30
     },
     {
         "id": "P0007",
-        "name": "hjgtlijgo",
+        "name": "Anjir",
         "price": 15000,
-        "stock": 44
+        "stock": 30
     },
     {
         "id": "P0008",
-        "name": "vgcyghj",
-        "price": 56709,
-        "stock": 78
+        "name": "Olcha",
+        "price": 15000,
+        "stock": 10
     },
     {
         "id": "P0009",
-        "name": "fdfu",
-        "price": 2378,
-        "stock": 47
-    },
-    {
-        "id": "P0010",
-        "name": "ffdfhk",
-        "price": 6700,
-        "stock": 56
-    },
-    {
-        "id": "P0011",
-        "name": "zwesrtyfgi",
-        "price": 45000,
-        "stock": 67
-    },
-    {
-        "id": "P0012",
-        "name": "cyfghj",
-        "price": 45000,
-        "stock": 56
-    },
-    {
-        "id": "P0013",
-        "name": "lbvggh",
-        "price": 34000,
-        "stock": 45
-    },
-    {
-        "id": "P0014",
-        "name": "srtyfghjkl",
-        "price": 4500,
-        "stock": 45
-    },
-    {
-        "id": "P0015",
-        "name": "ygxdrtfygh",
-        "price": 23456,
-        "stock": 56
-    },
-    {
-        "id": "P0016",
-        "name": "gftfyguhoi",
-        "price": 345678,
-        "stock": 34567
-    },
-    {
-        "id": "P0017",
-        "name": "rsdtfgyhj",
-        "price": 45678,
-        "stock": 47
+        "name": "banan",
+        "price": 15000,
+        "stock": 10
     }
 ]
