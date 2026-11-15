@@ -3,7 +3,7 @@
         "id": "P0001",
         "name": "Olma",
         "price": 15000,
-        "stock": 30
+        "stock": 40
     },
     {
         "id": "P0002",
@@ -40,5 +40,17 @@
         "name": "Anjir",
         "price": 15000,
         "stock": 30
+    },
+    {
+        "id": "P0008",
+        "name": "Olcha",
+        "price": 15000,
+        "stock": 10
+    },
+    {
+        "id": "P0009",
+        "name": "banan",
+        "price": 15000,
+        "stock": 10
     }
 ]
