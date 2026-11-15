@@ -196,12 +196,11 @@ def add_product(quentity=None, id=None, name=None, price=None, stock=None):
 
             products.append(product.model_dump())
             added_ids.append(product_id)
+            save_products(products)
 
         except ValidationError as error:
             print("Product validation error:")
             print(error)
-
-    save_products(products)
 
     return True, added_ids
 
