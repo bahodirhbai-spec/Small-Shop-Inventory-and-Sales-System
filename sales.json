@@ -38,5 +38,13 @@
         "quantity": 30,
         "unit_price": 15000,
         "total": 450000
+    },
+    {
+        "sale_id": "S0006",
+        "product_id": "P0009",
+        "product_name": "banan",
+        "quantity": 10,
+        "unit_price": 15000,
+        "total": 150000
     }
 ]
